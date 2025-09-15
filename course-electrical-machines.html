@@ -10,79 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Heebo', sans-serif; }
-
-        /* Accordion Styles from CodePen */
-        .accordion {
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-
-        .accordion details {
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .accordion details:last-child {
-            border-bottom: none;
-        }
-
-        .accordion summary {
-            list-style: none;
-            cursor: pointer;
-            padding: 1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            background-color: #f7fafc;
-        }
-
-        .accordion summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .accordion summary::before {
-            content: '';
-            display: inline-block;
-            width: 0.5rem;
-            height: 0.5rem;
-            border-style: solid;
-            border-width: 0 2px 2px 0;
-            border-color: #4a5568;
-            margin-left: 0.75rem;
-            transform: rotate(45deg);
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .accordion details[open] > summary::before {
-            transform: rotate(-135deg);
-        }
-
-        .accordion .accordion-content-wrapper {
-            overflow: hidden;
-        }
-
-        .accordion .accordion-content {
-            padding: 1rem;
-            background-color: #ffffff;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        /* Nested Accordion Styles */
-        .accordion .accordion-content details {
-            border-radius: 0.375rem;
-            border: 1px solid #e2e8f0;
-        }
-        .accordion .accordion-content summary {
-            background-color: #edf2f7;
-            font-weight: 500;
-        }
-        .accordion .accordion-content .accordion-content {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
+        .accordion { border: 1px solid #e2e8f0; border-radius: 0.5rem; overflow: hidden; }
+        .accordion details { border-bottom: 1px solid #e2e8f0; }
+        .accordion details:last-child { border-bottom: none; }
+        .accordion summary { list-style: none; cursor: pointer; padding: 1rem; font-weight: 600; display: flex; align-items: center; background-color: #f7fafc;}
+        .accordion summary::-webkit-details-marker { display: none; }
+        .accordion summary::before { content: ''; display: inline-block; width: 0.5rem; height: 0.5rem; border-style: solid; border-width: 0 2px 2px 0; border-color: #4a5568; margin-left: 0.75rem; transform: rotate(45deg); transition: transform 0.2s ease-in-out; }
+        .accordion details[open] > summary::before { transform: rotate(-135deg); }
+        .accordion .accordion-content-wrapper { overflow: hidden; }
+        .accordion .accordion-content { padding: 1rem; background-color: #ffffff; border-top: 1px solid #e2e8f0; }
+        .accordion .accordion-content details { border-radius: 0.375rem; border: 1px solid #e2e8f0; }
+        .accordion .accordion-content summary { background-color: #edf2f7; font-weight: 500; }
+        .accordion .accordion-content .accordion-content { padding-top: 0.5rem; padding-bottom: 0.5rem; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text="gray-800">
 
 <header class="bg-white shadow-md sticky top-0 z-20">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -118,29 +60,11 @@
                 <div class="accordion">
                     <details>
                         <summary>תכניות לימוד</summary>
-                        <div class="accordion-content-wrapper">
-                            <div class="accordion-content">
-                                <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                    <span>תכנית לימודים - הנדסאים</span>
-                                    <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                </a>
-                                <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                    <span>תכנית לימודים - טכנאים</span>
-                                    <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                </a>
-                            </div>
-                        </div>
+                        <div class="accordion-content-wrapper"><div class="accordion-content" id="curriculum"></div></div>
                     </details>
                     <details>
                         <summary>קבצים שימושיים</summary>
-                        <div class="accordion-content-wrapper">
-                            <div class="accordion-content">
-                                <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                    <span>דף נוסחאות</span>
-                                    <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                </a>
-                            </div>
-                        </div>
+                        <div class="accordion-content-wrapper"><div class="accordion-content" id="useful-files"></div></div>
                     </details>
                 </div>
             </div>
@@ -151,61 +75,29 @@
                 <div class="accordion">
                     <details>
                         <summary>מה"ט</summary>
-                        <div class="accordion-content-wrapper">
-                            <div class="accordion-content space-y-4">
-                                <details>
-                                    <summary>הנדסאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>מבחן מה"ט הנדסאים - קובץ 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                                <details>
-                                    <summary>טכנאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>מבחן מה"ט טכנאים - קובץ 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-                        </div>
+                        <div class="accordion-content-wrapper"><div class="accordion-content space-y-4">
+                            <details>
+                                <summary>הנדסאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-mahat-handasaim"></div></div>
+                            </details>
+                            <details>
+                                <summary>טכנאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-mahat-technaim"></div></div>
+                            </details>
+                        </div></div>
                     </details>
                     <details>
                         <summary>משרד החינוך</summary>
-                        <div class="accordion-content-wrapper">
-                            <div class="accordion-content space-y-4">
-                                <details>
-                                    <summary>הנדסאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>מבחן משרד החינוך הנדסאים - קובץ 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                                <details>
-                                    <summary>טכנאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>מבחן משרד החינוך טכנאים - קובץ 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-                        </div>
+                        <div class="accordion-content-wrapper"><div class="accordion-content space-y-4">
+                            <details>
+                                <summary>הנדסאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-education-handasaim"></div></div>
+                            </details>
+                            <details>
+                                <summary>טכנאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-education-technaim"></div></div>
+                            </details>
+                        </div></div>
                     </details>
                 </div>
             </div>
@@ -216,61 +108,29 @@
                 <div class="accordion">
                     <details>
                         <summary>מה"ט</summary>
-                        <div class="accordion-content-wrapper">
-                            <div class="accordion-content space-y-4">
-                                <details>
-                                    <summary>הנדסאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>פתרון מה"ט הנדסאים - קובץ 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                                <details>
-                                    <summary>טכנאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>פתרון מה"ט טכנאים - קובץ 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-                        </div>
+                        <div class="accordion-content-wrapper"><div class="accordion-content space-y-4">
+                            <details>
+                                <summary>הנדסאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-mahat-handasaim"></div></div>
+                            </details>
+                            <details>
+                                <summary>טכנאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-mahat-technaim"></div></div>
+                            </details>
+                        </div></div>
                     </details>
                     <details>
                         <summary>משרד החינוך</summary>
-                        <div class="accordion-content-wrapper">
-                            <div class="accordion-content space-y-4">
-                                <details>
-                                    <summary>הנדסאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>פתרון משרד החינוך הנדסאים - קובץ 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                                <details>
-                                    <summary>טכנאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>פתרון משרד החינוך טכנאים - קובץ 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-                        </div>
+                        <div class="accordion-content-wrapper"><div class="accordion-content space-y-4">
+                            <details>
+                                <summary>הנדסאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-education-handasaim"></div></div>
+                            </details>
+                            <details>
+                                <summary>טכנאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-education-technaim"></div></div>
+                            </details>
+                        </div></div>
                     </details>
                 </div>
             </div>
@@ -281,25 +141,11 @@
                 <div class="accordion">
                     <details>
                         <summary>הנדסאים</summary>
-                        <div class="accordion-content-wrapper">
-                            <div class="accordion-content">
-                                <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                    <span>סיכום נושא: שנאים</span>
-                                    <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                </a>
-                            </div>
-                        </div>
+                        <div class="accordion-content-wrapper"><div class="accordion-content" id="study-materials-handasaim"></div></div>
                     </details>
                     <details>
                         <summary>טכנאים</summary>
-                        <div class="accordion-content-wrapper">
-                            <div class="accordion-content">
-                                <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                    <span>סיכום נושא: מנועי DC</span>
-                                    <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                </a>
-                            </div>
-                        </div>
+                        <div class="accordion-content-wrapper"><div class="accordion-content" id="study-materials-technaim"></div></div>
                     </details>
                 </div>
             </div>
@@ -311,61 +157,29 @@
                 <div class="accordion">
                     <details>
                         <summary>מה"ט</summary>
-                        <div class="accordion-content-wrapper">
-                            <div class="accordion-content space-y-4">
-                                <details>
-                                    <summary>הנדסאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>תרגול מה"ט הנדסאים - נושא 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                                <details>
-                                    <summary>טכנאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>תרגול מה"ט טכנאים - נושא 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-                        </div>
+                        <div class="accordion-content-wrapper"><div class="accordion-content space-y-4">
+                            <details>
+                                <summary>הנדסאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="practice-mahat-handasaim"></div></div>
+                            </details>
+                            <details>
+                                <summary>טכנאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="practice-mahat-technaim"></div></div>
+                            </details>
+                        </div></div>
                     </details>
                     <details>
                         <summary>משרד החינוך</summary>
-                        <div class="accordion-content-wrapper">
-                            <div class="accordion-content space-y-4">
-                                <details>
-                                    <summary>הנדסאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>תרגול מ.החינוך הנדסאים - נושא 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                                <details>
-                                    <summary>טכנאים</summary>
-                                    <div class="accordion-content-wrapper">
-                                        <div class="accordion-content">
-                                            <a href="#" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
-                                                <span>תרגול מ.החינוך טכנאים - נושא 1</span>
-                                                <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">הורדה</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-                        </div>
+                        <div class="accordion-content-wrapper"><div class="accordion-content space-y-4">
+                            <details>
+                                <summary>הנדסאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="practice-education-handasaim"></div></div>
+                            </details>
+                            <details>
+                                <summary>טכנאים</summary>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="practice-education-technaim"></div></div>
+                            </details>
+                        </div></div>
                     </details>
                 </div>
             </div>
@@ -381,6 +195,79 @@
 </footer>
 
 <script>
+    // --- START OF DYNAMIC CONTENT LOGIC ---
+
+    const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQTaNkP0Rqwf-UzVt2H-T9Rk6L8YsQ3PFn7mXrTUoV8I08yyVikLzXcmopasIfUaS5-OXRQbQ49tqLl/pub?output=csv';
+    const CURRENT_COURSE_ID = 'machines'; // This is the only major change!
+
+    function generateFileList(files) {
+        if (!files || files.length === 0) {
+            return '<p class="text-gray-500">אין קבצים להצגה כרגע.</p>';
+        }
+        return files.map(file => `
+                <a href="${file.url}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-md hover:bg-blue-50 text-blue-600">
+                    <span>${file.title}</span>
+                    <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">פתיחה</span>
+                </a>
+            `).join('');
+    }
+
+    async function fetchAndRenderData() {
+        try {
+            const response = await fetch(SPREADSHEET_URL);
+            if (!response.ok) { throw new Error('Network response was not ok'); }
+            const csvText = await response.text();
+
+            const cleanCell = (cell) => {
+                if (typeof cell !== 'string') return '';
+                let cleaned = cell.trim();
+                if (cleaned.startsWith('"') && cleaned.endsWith('"')) {
+                    cleaned = cleaned.substring(1, cleaned.length - 1);
+                }
+                return cleaned.replace(/""/g, '"');
+            };
+
+            const rows = csvText.split(/\r?\n/).map(row => row.split(','));
+            const headers = rows.shift();
+            const allFiles = rows.map(row => ({
+                title: cleanCell(row[0]),
+                url: cleanCell(row[1]),
+                category: cleanCell(row[2]),
+                course: cleanCell(row[3])
+            }));
+
+            // Filter files for the current course
+            const courseFiles = allFiles.filter(file => file.course === CURRENT_COURSE_ID);
+
+            const filesByCategory = {};
+            courseFiles.forEach(file => {
+                if (file.category) {
+                    const category = file.category.trim();
+                    if (!filesByCategory[category]) {
+                        filesByCategory[category] = [];
+                    }
+                    filesByCategory[category].push(file);
+                }
+            });
+
+            for (const category in filesByCategory) {
+                const element = document.getElementById(category);
+                if (element) {
+                    element.innerHTML = generateFileList(filesByCategory[category]);
+                } else {
+                    console.warn(`HTML element with id "${category}" not found.`);
+                }
+            }
+
+        } catch (error) {
+            console.error('Error fetching or parsing spreadsheet data:', error);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchAndRenderData();
+    });
+
     class Accordion {
         constructor(el) {
             this.el = el;
@@ -391,57 +278,35 @@
             this.isExpanding = false;
             this.summary.addEventListener('click', (e) => this.onClick(e));
         }
-
         onClick(e) {
             e.preventDefault();
             this.el.style.overflow = 'hidden';
-            if (this.isClosing || !this.el.open) {
-                this.open();
-            } else if (this.isExpanding || this.el.open) {
-                this.shrink();
-            }
+            if (this.isClosing || !this.el.open) { this.open(); }
+            else if (this.isExpanding || this.el.open) { this.shrink(); }
         }
-
         shrink() {
             this.isClosing = true;
             const startHeight = `${this.el.offsetHeight}px`;
             const endHeight = `${this.summary.offsetHeight}px`;
-            if (this.animation) {
-                this.animation.cancel();
-            }
-            this.animation = this.el.animate({
-                height: [startHeight, endHeight]
-            }, {
-                duration: 300,
-                easing: 'ease-out'
-            });
+            if (this.animation) { this.animation.cancel(); }
+            this.animation = this.el.animate({ height: [startHeight, endHeight] }, { duration: 300, easing: 'ease-out' });
             this.animation.onfinish = () => this.onAnimationFinish(false);
             this.animation.oncancel = () => this.isClosing = false;
         }
-
         open() {
             this.el.style.height = `${this.el.offsetHeight}px`;
             this.el.open = true;
             window.requestAnimationFrame(() => this.expand());
         }
-
         expand() {
             this.isExpanding = true;
             const startHeight = `${this.el.offsetHeight}px`;
             const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
-            if (this.animation) {
-                this.animation.cancel();
-            }
-            this.animation = this.el.animate({
-                height: [startHeight, endHeight]
-            }, {
-                duration: 300,
-                easing: 'ease-out'
-            });
+            if (this.animation) { this.animation.cancel(); }
+            this.animation = this.el.animate({ height: [startHeight, endHeight] }, { duration: 300, easing: 'ease-out' });
             this.animation.onfinish = () => this.onAnimationFinish(true);
             this.animation.oncancel = () => this.isExpanding = false;
         }
-
         onAnimationFinish(open) {
             this.el.open = open;
             this.animation = null;
@@ -450,12 +315,8 @@
             this.el.style.height = this.el.style.overflow = '';
         }
     }
-
-    document.querySelectorAll('details').forEach((el) => {
-        new Accordion(el);
-    });
+    document.querySelectorAll('details').forEach((el) => { new Accordion(el); });
 </script>
-
 </body>
 </html>
 
