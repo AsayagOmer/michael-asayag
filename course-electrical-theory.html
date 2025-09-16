@@ -54,7 +54,6 @@
     <section class="py-12 md:py-20">
         <div class="container mx-auto px-6 space-y-10">
 
-            <!-- All content blocks are now just empty placeholders -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">קבצים שימושיים ותכניות לימוד</h2>
                 <div class="accordion">
@@ -77,11 +76,19 @@
                         <div class="accordion-content-wrapper"><div class="accordion-content space-y-4">
                             <details>
                                 <summary>הנדסאים</summary>
-                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-mahat-handasaim"></div></div>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-mahat-handasaim">
+                                    <div class="mb-4">
+                                        <input type="text" id="exams-mahat-handasaim-search" placeholder="חפש מבחן לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div></div>
                             </details>
                             <details>
                                 <summary>טכנאים</summary>
-                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-mahat-technaim"></div></div>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-mahat-technaim">
+                                    <div class="mb-4">
+                                        <input type="text" id="exams-mahat-technaim-search" placeholder="חפש מבחן לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div></div>
                             </details>
                         </div></div>
                     </details>
@@ -90,11 +97,19 @@
                         <div class="accordion-content-wrapper"><div class="accordion-content space-y-4">
                             <details>
                                 <summary>הנדסאים</summary>
-                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-education-handasaim"></div></div>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-education-handasaim">
+                                    <div class="mb-4">
+                                        <input type="text" id="exams-education-handasaim-search" placeholder="חפש מבחן לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div></div>
                             </details>
                             <details>
                                 <summary>טכנאים</summary>
-                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-education-technaim"></div></div>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-education-technaim">
+                                    <div class="mb-4">
+                                        <input type="text" id="exams-education-technaim-search" placeholder="חפש מבחן לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div></div>
                             </details>
                         </div></div>
                     </details>
@@ -109,11 +124,19 @@
                         <div class="accordion-content-wrapper"><div class="accordion-content space-y-4">
                             <details>
                                 <summary>הנדסאים</summary>
-                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-mahat-handasaim"></div></div>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-mahat-handasaim">
+                                    <div class="mb-4">
+                                        <input type="text" id="solutions-mahat-handasaim-search" placeholder="חפש פתרון לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div></div>
                             </details>
                             <details>
                                 <summary>טכנאים</summary>
-                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-mahat-technaim"></div></div>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-mahat-technaim">
+                                    <div class="mb-4">
+                                        <input type="text" id="solutions-mahat-technaim-search" placeholder="חפש פתרון לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div></div>
                             </details>
                         </div></div>
                     </details>
@@ -122,11 +145,19 @@
                         <div class="accordion-content-wrapper"><div class="accordion-content space-y-4">
                             <details>
                                 <summary>הנדסאים</summary>
-                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-education-handasaim"></div></div>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-education-handasaim">
+                                    <div class="mb-4">
+                                        <input type="text" id="solutions-education-handasaim-search" placeholder="חפש פתרון לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div></div>
                             </details>
                             <details>
                                 <summary>טכנאים</summary>
-                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-education-technaim"></div></div>
+                                <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-education-technaim">
+                                    <div class="mb-4">
+                                        <input type="text" id="solutions-education-technaim-search" placeholder="חפש פתרון לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div></div>
                             </details>
                         </div></div>
                     </details>
@@ -186,7 +217,7 @@
 
 <footer class="bg-gray-800 text-white py-8">
     <div class="container mx-auto px-6 text-center">
-        <p>&copy; 2024 מיכאל אסייג. כל הזכויות שמורות.</p>
+        <p>&copy; 2025 מיכאל אסייג. כל הזכויות שמורות.</p>
     </div>
 </footer>
 
@@ -195,6 +226,8 @@
 
     const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQTaNkP0Rqwf-UzVt2H-T9Rk6L8YsQ3PFn7mXrTUoV8I08yyVikLzXcmopasIfUaS5-OXRQbQ49tqLl/pub?output=csv';
     const CURRENT_COURSE_ID = 'theory'; // This tells the script which course this page is for
+    let allCourseFiles = [];
+    const containerIDs = ['curriculum', 'useful-files', 'exams-mahat-handasaim', 'exams-mahat-technaim', 'exams-education-handasaim', 'exams-education-technaim', 'solutions-mahat-handasaim', 'solutions-mahat-technaim', 'solutions-education-handasaim', 'solutions-education-technaim', 'study-materials-handasaim', 'study-materials-technaim', 'practice-mahat-handasaim', 'practice-mahat-technaim', 'practice-education-handasaim', 'practice-education-technaim'];
 
     function generateFileList(files) {
         if (!files || files.length === 0) {
@@ -225,18 +258,15 @@
 
             const rows = csvText.split(/\r?\n/).map(row => row.split(','));
             const headers = rows.shift();
-            const allFiles = rows.map(row => ({
+            allCourseFiles = rows.map(row => ({
                 title: cleanCell(row[0]),
                 url: cleanCell(row[1]),
                 category: cleanCell(row[2]),
                 course: cleanCell(row[3])
-            }));
-
-            // Filter files for the current course
-            const courseFiles = allFiles.filter(file => file.course === CURRENT_COURSE_ID);
+            })).filter(file => file.course === CURRENT_COURSE_ID);
 
             const filesByCategory = {};
-            courseFiles.forEach(file => {
+            allCourseFiles.forEach(file => {
                 if (file.category) {
                     const category = file.category.trim();
                     if (!filesByCategory[category]) {
@@ -246,14 +276,31 @@
                 }
             });
 
-            for (const category in filesByCategory) {
-                const element = document.getElementById(category);
+            containerIDs.forEach(id => {
+                const element = document.getElementById(id);
                 if (element) {
-                    element.innerHTML = generateFileList(filesByCategory[category]);
+                    const filesToRender = filesByCategory[id] || [];
+                    const searchInputId = `${id}-search`;
+                    const searchInput = document.getElementById(searchInputId);
+
+                    if (searchInput) {
+                        const filesContainer = document.createElement('div');
+                        filesContainer.classList.add('files-container', 'space-y-2');
+                        filesContainer.innerHTML = generateFileList(filesToRender);
+                        element.appendChild(filesContainer);
+
+                        searchInput.addEventListener('input', () => {
+                            const searchText = searchInput.value.toLowerCase();
+                            const filteredFiles = filesToRender.filter(file => file.title.toLowerCase().includes(searchText));
+                            filesContainer.innerHTML = generateFileList(filteredFiles);
+                        });
+                    } else {
+                        element.innerHTML = generateFileList(filesToRender);
+                    }
                 } else {
-                    console.warn(`HTML element with id "${category}" not found.`);
+                    console.warn(`HTML element with id "${id}" not found.`);
                 }
-            }
+            });
 
         } catch (error) {
             console.error('Error fetching or parsing spreadsheet data:', error);
@@ -315,4 +362,3 @@
 </script>
 </body>
 </html>
-
