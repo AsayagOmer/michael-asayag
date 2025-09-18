@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>שימוש במחשבון - מיכאל אסייג</title>
+    <title>רקע בפיזיקה - מיכאל אסייג</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,10 +34,10 @@
 </header>
 
 <main>
-    <section class="bg-gray-700 text-white">
+    <section class="bg-blue-700 text-white">
         <div class="container mx-auto px-6 py-16 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold">שימוש במחשבון</h1>
-            <p class="text-lg md:text-xl mt-4 text-blue-200">הדרכות וידאו וכלים לשימוש יעיל במחשבון.</p>
+            <h1 class="text-4xl md:text-5xl font-bold">רקע בפיזיקה</h1>
+            <p class="text-lg md:text-xl mt-4 text-blue-200">חוקים ומושגים בסיסיים במכניקה וחשמל.</p>
             <div class="flex justify-center">
                 <a href="background-for-engineers.html" class="mt-8 inline-flex items-center text-white font-semibold hover:text-blue-100">
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 12h14"></path></svg>
@@ -84,7 +84,6 @@
                     videoId = item.url.split('/embed/')[1].split('?')[0];
                 }
             } catch (e) {
-                // If URL parsing fails, assume it's a direct ID
                 videoId = item.url;
             }
 
@@ -116,7 +115,7 @@
     async function fetchAndRenderData() {
         const contentContainer = document.getElementById('content-container');
         // Define the topic in English
-        const currentTopicEnglish = 'Calculator'; // The specific change for this page
+        const currentTopicEnglish = 'Physics'; // The specific change for this page
 
         try {
             const response = await fetch(CONTENT_SHEET_URL);
