@@ -13,14 +13,32 @@
         .accordion { border: 1px solid #e2e8f0; border-radius: 0.5rem; overflow: hidden; }
         .accordion details { border-bottom: 1px solid #e2e8f0; }
         .accordion details:last-child { border-bottom: none; }
-        .accordion summary { list-style: none; cursor: pointer; padding: 1rem; font-weight: 600; display: flex; align-items: center; background-color: #f7fafc;}
-        .accordion summary::-webkit-details-marker { display: none; }
+
+        /* Style for the main accordion level (e.g., Mahat/Education) */
+        .accordion > details > summary { list-style: none; cursor: pointer; padding: 1rem; font-weight: 600; display: flex; align-items: center; background-color: #f7fafc;}
+
+        /* FIX: Ensure the default browser marker (the "half full head") is hidden for all summaries */
+        .accordion summary {
+            list-style: none;
+        }
+        .accordion summary::-webkit-details-marker,
+        .accordion summary::marker {
+            display: none;
+        }
+
         .accordion summary::before { content: ''; display: inline-block; width: 0.5rem; height: 0.5rem; border-style: solid; border-width: 0 2px 2px 0; border-color: #4a5568; margin-left: 0.75rem; transform: rotate(45deg); transition: transform 0.2s ease-in-out; }
         .accordion details[open] > summary::before { transform: rotate(-135deg); }
         .accordion .accordion-content-wrapper { overflow: hidden; }
         .accordion .accordion-content { padding: 1rem; background-color: #ffffff; border-top: 1px solid #e2e8f0; }
+
+        /* Styling for the nested accordions (e.g., Handasaim/Technaim) */
         .accordion .accordion-content details { border-radius: 0.375rem; border: 1px solid #e2e8f0; }
-        .accordion .accordion-content summary { background-color: #edf2f7; font-weight: 500; }
+        .accordion .accordion-content > details:not(:last-child) { margin-bottom: 0.5rem; }
+
+        /* Styling for the deepest nested accordions (Year Grouping) */
+        .accordion .accordion-content details details { margin-bottom: 0.25rem; }
+        .accordion .accordion-content details summary { background-color: #edf2f7; font-weight: 500; }
+        .accordion .accordion-content details details summary { background-color: #f7f9fb; font-weight: 400; padding: 0.75rem 1rem; }
         .accordion .accordion-content .accordion-content { padding-top: 0.5rem; padding-bottom: 0.5rem; }
     </style>
 </head>
@@ -45,7 +63,7 @@
             <h1 class="text-4xl md:text-5xl font-bold">מכונות חשמל</h1>
             <p class="text-lg md:text-xl mt-4 text-blue-200">עקרונות פעולה, מבנה ובקרה של שנאים, מנועים וגנרטורים.</p>
             <a href="courses.html" class="mt-8 inline-flex items-center text-white font-semibold hover:underline">
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 12h14"></path></svg>
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 12h14"></path></svg>
                 <span>חזרה לכל הקורסים</span>
             </a>
         </div>
@@ -68,6 +86,7 @@
                 </div>
             </div>
 
+            <!-- מבחנים חיצוניים (External Exams) -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">מבחנים חיצוניים</h2>
                 <div class="accordion">
@@ -77,17 +96,27 @@
                             <details>
                                 <summary>הנדסאים</summary>
                                 <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-mahat-handasaim">
-                                    <div class="mb-4">
-                                        <input type="text" id="exams-mahat-handasaim-search" placeholder="חפש מבחן לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="space-y-2 mb-4">
+                                        <input type="text" id="exams-mahat-handasaim-search" placeholder="חפש מבחן לפי שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <div id="exams-mahat-handasaim-year-select-wrapper" class="flex items-center space-x-2 space-x-reverse">
+                                            <label for="exams-mahat-handasaim-year-select" class="text-sm font-medium text-gray-700 whitespace-nowrap">סנן לפי שנה:</label>
+                                            <select id="exams-mahat-handasaim-year-select" class="w-full px-4 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                                        </div>
                                     </div>
+                                    <!-- Dynamic content (year accordions) will be injected here by JS -->
                                 </div></div>
                             </details>
                             <details>
                                 <summary>טכנאים</summary>
                                 <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-mahat-technaim">
-                                    <div class="mb-4">
-                                        <input type="text" id="exams-mahat-technaim-search" placeholder="חפש מבחן לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="space-y-2 mb-4">
+                                        <input type="text" id="exams-mahat-technaim-search" placeholder="חפש מבחן לפי שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <div id="exams-mahat-technaim-year-select-wrapper" class="flex items-center space-x-2 space-x-reverse">
+                                            <label for="exams-mahat-technaim-year-select" class="text-sm font-medium text-gray-700 whitespace-nowrap">סנן לפי שנה:</label>
+                                            <select id="exams-mahat-technaim-year-select" class="w-full px-4 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                                        </div>
                                     </div>
+                                    <!-- Dynamic content (year accordions) will be injected here by JS -->
                                 </div></div>
                             </details>
                         </div></div>
@@ -98,17 +127,27 @@
                             <details>
                                 <summary>הנדסאים</summary>
                                 <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-education-handasaim">
-                                    <div class="mb-4">
-                                        <input type="text" id="exams-education-handasaim-search" placeholder="חפש מבחן לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="space-y-2 mb-4">
+                                        <input type="text" id="exams-education-handasaim-search" placeholder="חפש מבחן לפי שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <div id="exams-education-handasaim-year-select-wrapper" class="flex items-center space-x-2 space-x-reverse">
+                                            <label for="exams-education-handasaim-year-select" class="text-sm font-medium text-gray-700 whitespace-nowrap">סנן לפי שנה:</label>
+                                            <select id="exams-education-handasaim-year-select" class="w-full px-4 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                                        </div>
                                     </div>
+                                    <!-- Dynamic content (year accordions) will be injected here by JS -->
                                 </div></div>
                             </details>
                             <details>
                                 <summary>טכנאים</summary>
                                 <div class="accordion-content-wrapper"><div class="accordion-content" id="exams-education-technaim">
-                                    <div class="mb-4">
-                                        <input type="text" id="exams-education-technaim-search" placeholder="חפש מבחן לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="space-y-2 mb-4">
+                                        <input type="text" id="exams-education-technaim-search" placeholder="חפש מבחן לפי שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <div id="exams-education-technaim-year-select-wrapper" class="flex items-center space-x-2 space-x-reverse">
+                                            <label for="exams-education-technaim-year-select" class="text-sm font-medium text-gray-700 whitespace-nowrap">סנן לפי שנה:</label>
+                                            <select id="exams-education-technaim-year-select" class="w-full px-4 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                                        </div>
                                     </div>
+                                    <!-- Dynamic content (year accordions) will be injected here by JS -->
                                 </div></div>
                             </details>
                         </div></div>
@@ -116,6 +155,7 @@
                 </div>
             </div>
 
+            <!-- פתרונות למבחנים חיצוניים (External Exam Solutions) -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">פתרונות למבחנים חיצוניים</h2>
                 <div class="accordion">
@@ -125,17 +165,27 @@
                             <details>
                                 <summary>הנדסאים</summary>
                                 <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-mahat-handasaim">
-                                    <div class="mb-4">
-                                        <input type="text" id="solutions-mahat-handasaim-search" placeholder="חפש פתרון לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="space-y-2 mb-4">
+                                        <input type="text" id="solutions-mahat-handasaim-search" placeholder="חפש פתרון לפי שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <div id="solutions-mahat-handasaim-year-select-wrapper" class="flex items-center space-x-2 space-x-reverse">
+                                            <label for="solutions-mahat-handasaim-year-select" class="text-sm font-medium text-gray-700 whitespace-nowrap">סנן לפי שנה:</label>
+                                            <select id="solutions-mahat-handasaim-year-select" class="w-full px-4 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                                        </div>
                                     </div>
+                                    <!-- Dynamic content (year accordions) will be injected here by JS -->
                                 </div></div>
                             </details>
                             <details>
                                 <summary>טכנאים</summary>
                                 <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-mahat-technaim">
-                                    <div class="mb-4">
-                                        <input type="text" id="solutions-mahat-technaim-search" placeholder="חפש פתרון לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="space-y-2 mb-4">
+                                        <input type="text" id="solutions-mahat-technaim-search" placeholder="חפש פתרון לפי שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <div id="solutions-mahat-technaim-year-select-wrapper" class="flex items-center space-x-2 space-x-reverse">
+                                            <label for="solutions-mahat-technaim-year-select" class="text-sm font-medium text-gray-700 whitespace-nowrap">סנן לפי שנה:</label>
+                                            <select id="solutions-mahat-technaim-year-select" class="w-full px-4 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                                        </div>
                                     </div>
+                                    <!-- Dynamic content (year accordions) will be injected here by JS -->
                                 </div></div>
                             </details>
                         </div></div>
@@ -146,17 +196,27 @@
                             <details>
                                 <summary>הנדסאים</summary>
                                 <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-education-handasaim">
-                                    <div class="mb-4">
-                                        <input type="text" id="solutions-education-handasaim-search" placeholder="חפש פתרון לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="space-y-2 mb-4">
+                                        <input type="text" id="solutions-education-handasaim-search" placeholder="חפש פתרון לפי שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <div id="solutions-education-handasaim-year-select-wrapper" class="flex items-center space-x-2 space-x-reverse">
+                                            <label for="solutions-education-handasaim-year-select" class="text-sm font-medium text-gray-700 whitespace-nowrap">סנן לפי שנה:</label>
+                                            <select id="solutions-education-handasaim-year-select" class="w-full px-4 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                                        </div>
                                     </div>
+                                    <!-- Dynamic content (year accordions) will be injected here by JS -->
                                 </div></div>
                             </details>
                             <details>
                                 <summary>טכנאים</summary>
                                 <div class="accordion-content-wrapper"><div class="accordion-content" id="solutions-education-technaim">
-                                    <div class="mb-4">
-                                        <input type="text" id="solutions-education-technaim-search" placeholder="חפש פתרון לפי שנה או שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="space-y-2 mb-4">
+                                        <input type="text" id="solutions-education-technaim-search" placeholder="חפש פתרון לפי שם..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <div id="solutions-education-technaim-year-select-wrapper" class="flex items-center space-x-2 space-x-reverse">
+                                            <label for="solutions-education-technaim-year-select" class="text-sm font-medium text-gray-700 whitespace-nowrap">סנן לפי שנה:</label>
+                                            <select id="solutions-education-technaim-year-select" class="w-full px-4 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                                        </div>
                                     </div>
+                                    <!-- Dynamic content (year accordions) will be injected here by JS -->
                                 </div></div>
                             </details>
                         </div></div>
@@ -225,10 +285,23 @@
     // --- START OF DYNAMIC CONTENT LOGIC ---
 
     const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQTaNkP0Rqwf-UzVt2H-T9Rk6L8YsQ3PFn7mXrTUoV8I08yyVikLzXcmopasIfUaS5-OXRQbQ49tqLl/pub?output=csv';
-    const CURRENT_COURSE_ID = 'machines'; // This is the only major change!
+    const CURRENT_COURSE_ID = 'machines'; // Updated for Electrical Machines course
     let allCourseFiles = [];
-    const containerIDs = ['curriculum', 'useful-files', 'exams-mahat-handasaim', 'exams-mahat-technaim', 'exams-education-handasaim', 'exams-education-technaim', 'solutions-mahat-handasaim', 'solutions-mahat-technaim', 'solutions-education-handasaim', 'solutions-education-technaim', 'study-materials-handasaim', 'study-materials-technaim', 'practice-mahat-handasaim', 'practice-mahat-technaim', 'practice-education-handasaim', 'practice-education-technaim'];
+    const containerIDs = [
+        'curriculum', 'useful-files',
+        'exams-mahat-handasaim', 'exams-mahat-technaim', 'exams-education-handasaim', 'exams-education-technaim',
+        'solutions-mahat-handasaim', 'solutions-mahat-technaim', 'solutions-education-handasaim', 'solutions-education-technaim',
+        'study-materials-handasaim', 'study-materials-technaim',
+        'practice-mahat-handasaim', 'practice-mahat-technaim', 'practice-education-handasaim', 'practice-education-technaim'
+    ];
 
+    // List of categories that should be grouped by Year and have a Year Select filter
+    const YEAR_GROUPED_CATEGORIES = [
+        'exams-mahat-handasaim', 'exams-mahat-technaim', 'exams-education-handasaim', 'exams-education-technaim',
+        'solutions-mahat-handasaim', 'solutions-mahat-technaim', 'solutions-education-handasaim', 'solutions-education-technaim'
+    ];
+
+    // 1. Function for generating a simple file list (reused inside year accordions)
     function generateFileList(files) {
         if (!files || files.length === 0) {
             return '<p class="text-gray-500">אין קבצים להצגה כרגע.</p>';
@@ -239,6 +312,124 @@
                     <span class="bg-blue-500 text-white text-sm font-semibold px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">פתיחה</span>
                 </a>
             `).join('');
+    }
+
+    // 2. Function to extract year from title
+    function extractYear(title) {
+        // Look for 4 digits that are likely a year (19xx or 20xx)
+        const match = title.match(/\b(19\d{2}|20\d{2})\b/);
+        return match ? match[0] : 'שונות'; // 'Miscellaneous'
+    }
+
+    // 3. Function to generate the year-grouped accordion content
+    function generateYearAccordion(files) {
+        if (!files || files.length === 0) {
+            return '<p class="text-gray-500">לא נמצאו קבצים תואמים לחיפוש זה.</p>';
+        }
+
+        const filesByYear = files.reduce((acc, file) => {
+            const year = extractYear(file.title);
+            if (!acc[year]) { acc[year] = []; }
+            acc[year].push(file);
+            return acc;
+        }, {});
+
+        // Sort years in descending order (newest first), keeping 'שונות' last
+        const sortedYears = Object.keys(filesByYear).sort((a, b) => {
+            if (a === 'שונות') return 1;
+            if (b === 'שונות') return -1;
+            return parseInt(b) - parseInt(a);
+        });
+
+        // Generate the HTML for the year accordions
+        return sortedYears.map(year => {
+            const yearFiles = filesByYear[year];
+            const content = generateFileList(yearFiles);
+
+            return `
+                <details>
+                    <summary>שנה: ${year}</summary>
+                    <div class="accordion-content-wrapper">
+                        <div class="accordion-content space-y-2">
+                            ${content}
+                        </div>
+                    </div>
+                </details>
+            `;
+        }).join('');
+    }
+
+    // 4. Function to handle both text and year filtering and rendering (using select box)
+    function applyFiltersAndRender(id, allFiles) {
+        const searchInput = document.getElementById(`${id}-search`);
+        const selectInput = document.getElementById(`${id}-year-select`);
+        const dynamicContentContainer = document.querySelector(`#${id} .content-container-dynamic`);
+
+        if (!dynamicContentContainer) return;
+
+        const searchText = searchInput ? searchInput.value.toLowerCase() : '';
+        const selectedYear = selectInput ? selectInput.value : 'all'; // Default to 'all'
+
+        // 1. Apply Text Filter
+        let filteredFiles = allFiles.filter(file =>
+            file.title.toLowerCase().includes(searchText)
+        );
+
+        // 2. Apply Year Filter (only if a specific year is selected)
+        if (selectedYear !== 'all') {
+            filteredFiles = filteredFiles.filter(file => {
+                // If 'שונות' is selected, match the 'שונות' category, otherwise match the year
+                if (selectedYear === 'שונות') {
+                    return extractYear(file.title) === 'שונות';
+                }
+                return extractYear(file.title) === selectedYear;
+            });
+        }
+
+        // 3. Render
+        dynamicContentContainer.innerHTML = generateYearAccordion(filteredFiles);
+
+        // Re-apply the accordion logic to the newly rendered details elements
+        dynamicContentContainer.querySelectorAll('details').forEach((el) => {
+            new Accordion(el);
+        });
+    }
+
+    // 5. Function to populate the year select dropdown and attach listeners (Select Box logic)
+    function populateYearSelectAndAttachListeners(id, allFiles) {
+        const selectInput = document.getElementById(`${id}-year-select`);
+        if (!selectInput) return;
+
+        const uniqueYears = new Set();
+        allFiles.forEach(file => {
+            uniqueYears.add(extractYear(file.title));
+        });
+
+        // Convert Set to Array and sort descending (except 'שונות')
+        const sortedYears = Array.from(uniqueYears).sort((a, b) => {
+            if (a === 'שונות') return 1;
+            if (b === 'שונות') return -1;
+            return parseInt(b) - parseInt(a);
+        });
+
+        let optionsHtml = '<option value="all">-- כל השנים --</option>';
+        sortedYears.forEach(year => {
+            optionsHtml += `<option value="${year}">${year}</option>`;
+        });
+
+        selectInput.innerHTML = optionsHtml;
+
+        // Attach listeners for both inputs to the central filtering function
+        const boundFilterAndRender = () => applyFiltersAndRender(id, allFiles);
+
+        const searchInput = document.getElementById(`${id}-search`);
+        if (searchInput) {
+            searchInput.addEventListener('input', boundFilterAndRender);
+        }
+        selectInput.addEventListener('change', boundFilterAndRender);
+
+        // Initial render after populating the select box
+        boundFilterAndRender();
     }
 
     async function fetchAndRenderData() {
@@ -258,12 +449,14 @@
 
             const rows = csvText.split(/\r?\n/).map(row => row.split(','));
             const headers = rows.shift();
+
+            // Map data and filter for the current course
             allCourseFiles = rows.map(row => ({
                 title: cleanCell(row[0]),
                 url: cleanCell(row[1]),
                 category: cleanCell(row[2]),
                 course: cleanCell(row[3])
-            })).filter(file => file.course === CURRENT_COURSE_ID);
+            })).filter(file => file.course === CURRENT_COURSE_ID && file.title && file.url); // Ensure title and url exist
 
             const filesByCategory = {};
             allCourseFiles.forEach(file => {
@@ -276,27 +469,42 @@
                 }
             });
 
+            // Iterate over all container IDs to render files
             containerIDs.forEach(id => {
                 const element = document.getElementById(id);
                 if (element) {
                     const filesToRender = filesByCategory[id] || [];
-                    const searchInputId = `${id}-search`;
-                    const searchInput = document.getElementById(searchInputId);
 
-                    if (searchInput) {
+                    // Logic for Year Grouped Categories (Exams and Solutions)
+                    if (YEAR_GROUPED_CATEGORIES.includes(id)) {
+
+                        // 1. Create a container for the dynamic content (year accordions)
+                        const dynamicContentContainer = document.createElement('div');
+                        dynamicContentContainer.classList.add('content-container-dynamic', 'space-y-4', 'mt-4'); // Added mt-4 for spacing
+
+                        // 2. Insert the dynamic content after the search/select wrapper
+                        const searchWrapper = element.querySelector('.mb-4');
+                        if (searchWrapper) {
+                            searchWrapper.after(dynamicContentContainer);
+                        } else {
+                            // Fallback if search wrapper not found
+                            element.appendChild(dynamicContentContainer);
+                        }
+
+                        // 3. Populate the year select box and attach listeners (Select Box logic)
+                        // This function also calls applyFiltersAndRender for the initial display
+                        populateYearSelectAndAttachListeners(id, filesToRender);
+
+                        // 4. Note: The Accordion class application is handled inside applyFiltersAndRender
+
+                    } else {
+                        // Logic for Flat Categories (Curriculum, Useful Files, Study, Practice)
                         const filesContainer = document.createElement('div');
-                        filesContainer.classList.add('files-container', 'space-y-2');
+                        filesContainer.classList.add('space-y-2');
                         filesContainer.innerHTML = generateFileList(filesToRender);
                         element.appendChild(filesContainer);
-
-                        searchInput.addEventListener('input', () => {
-                            const searchText = searchInput.value.toLowerCase();
-                            const filteredFiles = filesToRender.filter(file => file.title.toLowerCase().includes(searchText));
-                            filesContainer.innerHTML = generateFileList(filteredFiles);
-                        });
-                    } else {
-                        element.innerHTML = generateFileList(filesToRender);
                     }
+
                 } else {
                     console.warn(`HTML element with id "${id}" not found.`);
                 }
@@ -311,15 +519,23 @@
         fetchAndRenderData();
     });
 
+    // --- ACCORDION ANIMATION CLASS ---
     class Accordion {
         constructor(el) {
             this.el = el;
             this.summary = el.querySelector('summary');
             this.content = el.querySelector('.accordion-content-wrapper');
+            if (!this.summary || !this.content) return; // Guard against incomplete elements
+
             this.animation = null;
             this.isClosing = false;
             this.isExpanding = false;
-            this.summary.addEventListener('click', (e) => this.onClick(e));
+
+            // Check if the listener is already attached to prevent duplicates on re-render
+            if (!this.el.hasAttribute('data-accordion-init')) {
+                this.summary.addEventListener('click', (e) => this.onClick(e));
+                this.el.setAttribute('data-accordion-init', 'true');
+            }
         }
         onClick(e) {
             e.preventDefault();
@@ -343,8 +559,12 @@
         }
         expand() {
             this.isExpanding = true;
+            // The content height is calculated dynamically on open
             const startHeight = `${this.el.offsetHeight}px`;
-            const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
+            // Must check if content exists before calculating height
+            const contentHeight = this.content ? this.content.offsetHeight : 0;
+            const endHeight = `${this.summary.offsetHeight + contentHeight}px`;
+
             if (this.animation) { this.animation.cancel(); }
             this.animation = this.el.animate({ height: [startHeight, endHeight] }, { duration: 300, easing: 'ease-out' });
             this.animation.onfinish = () => this.onAnimationFinish(true);
@@ -358,7 +578,10 @@
             this.el.style.height = this.el.style.overflow = '';
         }
     }
+
+    // Initial application of the accordion class (will be applied to the main/nested details, and then to dynamically generated year details)
     document.querySelectorAll('details').forEach((el) => { new Accordion(el); });
+
 </script>
 </body>
 </html>
